@@ -51,6 +51,7 @@ def findcheapest(item_list: list):
     return cheapest_item
 
 similar_list1 = findSimilarItems("bread")
+print (similar_list1)
 print(findcheapest(similar_list1))
 
 similar_list2 = findSimilarItems("juice")
