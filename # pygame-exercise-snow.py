@@ -11,7 +11,7 @@ SKY_BLUE = (95, 165, 228)
 BLUE_1 = (0, 30, 100)
 WIDTH = 1280
 HEIGHT = 720
-TITLE = "it snowing!!"
+TITLE = "IT'S SNOWING!!!!!!!!!!!!!!!!!!!!!!!"
 
 NUM_SNOW = 100
 
