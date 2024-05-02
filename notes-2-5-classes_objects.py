@@ -16,51 +16,107 @@ class Pokemon:  # use a capital letter for class name
         self.weight = 0
         self.height = 0
         self.type = "normal"
-        self.actual_cry = "Roooar!"
+        self.actual_cry = "Roooooooooooooar!"
 
         print("A new Pokémon is born!")
 
-        def cry(self) -> str:
-            """Represents the sound a Pokemon makes
-            
-            Returns:
-            - string representing the  sound it makes"""
-            return f"{self.name} says, {self.actual_cry}"
+    def cry(self) -> str:
+        """Represents the sound a Pokemon makes
+
+        Returns:
+            - string representing the sound it makes"""
+        return f'{self.name} says, "{self.actual_cry}"!'
+
+    def eat(self, food: str) -> str:
+        """Represents feeding the Pokemon
+
+        Params:
+            - food: what food you feed it
+
+        Return:
+            - what it says after eating it"""
+        if food.lower() == "berry":
+            return f'{self.name} ate the berry and says, "YUM!"'
+        elif food.lower() == "potion":
+            return f"{self.name} consumed the potion and feels healthier!"
+        else:
+            return f"{self.name} batted the {food} away."
 
 
+# Create a new child class of Pokemon
+class Pikachu(Pokemon):
+    def __init__(self, name="Pikachu"):
+        # Call constructor of parent class
+        super().__init__()
+
+        # Assign the default values to properties
+        self.name = name
+        self.id = 25
+        self.type = "Electric"
+        self.actual_cry = "Pikachu"
+
+    def thundershock(self, defender: Pokemon) -> str:
+        """Simulate a thundershock attack against
+        another Pokemon.
+
+        Params:
+            - defender: defending Pokemon
+
+        Returns:
+            str representing result of attack.
+        """
+        response = f"{self.name} used thundershock on {defender.name}!"
+
+        if defender.type.lower() in ["water", "flying"]:
+            response = response + " It was super effective."
+
+        return response
+
+
+# Create a new child-class of pokemon for the type of your choice
+class Butterfree(Pokemon):
+ def __init__(self, name="Butterfree"):
+        super().__init__()
+
+        self.name = name
+        self.id = 12
+        self.type = "Bug"
+
+ def bugBuzz(self, defender: Pokemon) -> str:
+        response = f"{self.name} used bug buzz on {defender.name}!"
+
+        if defender.type.lower() in ["grass", "psychic", "dark"]:
+            response = response + " It was effective."
+
+        if defender.type.lower() in ["fighting", "flying", "poison", "ghost", "steel", "fire", "fairy"]:
+            response = response + "It was not effective."
+
+        return response
 
 # Create two Pokemon using our class
 # Make one Pokemon that is Pikachu
 pokemon_one = Pokemon()
-
-# Change some properties in pokemon_one
-#   Change its name
-print(pokemon_one.name)  # ""
 pokemon_one.name = "Pikachu"
-print(pokemon_one.name)  # "Pikachu"
-
 pokemon_one.id = 25
 pokemon_one.type = "Electric"
-
-print(pokemon_one.id)
-print(pokemon_one.type)
-
+pokemon_one.actual_cry = "Pikachu"
 
 # Make one Pokemon of your choice
-# Store it in a variable called
-#    pokemon_two
-#    - you can make Squirtle
-#       - id -> 4
-#       - type -> "Water"
 pokemon_two = Pokemon()
 
 pokemon_two.name = "Squirtle"
 pokemon_two.id = 4
 pokemon_two.type = "water"
+pokemon_two.actual_cry = "GRRraaggrrggg"
 
-print(pokemon_two.name)
-print(pokemon_two.id)
-print(pokemon_two.type)
+# Test the eat method
+print(pokemon_one.eat("berry"))
 
-print(pokemon_one.cry())
-print(pokemon_two.cry())
+pikachu_one = Pikachu()
+pikachu_two = Pikachu("Speedy")
+
+# Third pokemon
+pokemon_three = Pokemon()
+pokemon_three.name = "Jigglypuff"
+pokemon_three.id = 39
+pokemon_three.type = "fairy"
