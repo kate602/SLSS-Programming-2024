@@ -8,7 +8,7 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 YELLOW = (255, 255, 0)
 SKY_BLUE = (95, 165, 228)
-BLUE_1 = (10, 30, 120)
+BLUE_1 = (0, 30, 100)
 WIDTH = 1280
 HEIGHT = 720
 TITLE = "it snowing!!"
@@ -18,9 +18,9 @@ NUM_SNOW = 100
 # snow image sizes
 SNOW_IMAGE = pg.image.load("./images/whitesnowflake.png")
 SNOW_IMAGES = [
-    pg.transform.scale(SNOW_IMAGE, (10, 10)),
-    pg.transform.scale(SNOW_IMAGE, (15, 15)),
-    pg.transform.scale(SNOW_IMAGE, (20, 20))
+    pg.transform.scale(SNOW_IMAGE, (7, 7)),
+    pg.transform.scale(SNOW_IMAGE, (12, 12)),
+    pg.transform.scale(SNOW_IMAGE, (10, 10))
 ]
 
 
@@ -42,7 +42,7 @@ class Snow(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.centerx = random.randrange(0, WIDTH + 1)
         self.rect.centery = 0
-        self.vel_y = random.choice([4, 5, 6, 7, 8, 9])
+        self.vel_y = random.choice([2, 3, 4, 5, 6])
 
     def update(self):
         self.rect.y += self.vel_y
@@ -81,6 +81,8 @@ def main():
         for sprite in snow_sprites:
             if sprite.rect.y > HEIGHT+20:
                 sprite.kill()
+            #if sprite.rect.y > HEIGHT - 20:
+            #    sprite.vel_y = 0
 
         # add a new snow if _ millseconds elapses
         if pg.time.get_ticks() - last_snow > 100:
