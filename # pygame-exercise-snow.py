@@ -15,8 +15,8 @@ TITLE = "it snowing!!"
 
 NUM_SNOW = 100
 
+# snow image sizes
 SNOW_IMAGE = pg.image.load("./images/whitesnowflake.png")
-
 SNOW_IMAGES = [
     pg.transform.scale(SNOW_IMAGE, (10, 10)),
     pg.transform.scale(SNOW_IMAGE, (15, 15)),
@@ -46,9 +46,6 @@ class Snow(pg.sprite.Sprite):
 
     def update(self):
         self.rect.y += self.vel_y
-
-
-  
 
 def main():
     pg.init()
@@ -85,8 +82,8 @@ def main():
             if sprite.rect.y > HEIGHT+20:
                 sprite.kill()
 
-        # add a new snow if 10 millseconds elapses
-        if pg.time.get_ticks() - last_snow > 5:
+        # add a new snow if _ millseconds elapses
+        if pg.time.get_ticks() - last_snow > 100:
             # set last_snow to current tick
             last_snow = pg.time.get_ticks()
 
