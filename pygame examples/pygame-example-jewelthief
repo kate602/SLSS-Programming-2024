@@ -59,7 +59,6 @@ class Player(pg.sprite.Sprite):
         self.rect.center = next_pos
         self.image = self.images[self.facing]
 
-
 class Coin(pg.sprite.Sprite):
     def __init__(self):
         super().__init__()
